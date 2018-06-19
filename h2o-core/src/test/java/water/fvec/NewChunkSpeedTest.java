@@ -1,7 +1,6 @@
 package water.fvec;
 
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 import water.MRTask;
 import water.Scope;
@@ -16,13 +15,13 @@ import static org.junit.Assert.assertTrue;
  */
 
 public class NewChunkSpeedTest extends TestUtil {
-  @BeforeClass() public static void setup() { stall_till_cloudsize(1); }
-  int rowNumber = 100000;
-  int rowInterval = 1;
+  @BeforeClass() public static void setup() { stall_till_cloudsize(3); }
+  int rowNumber = 1000000;
+  int rowInterval = 1000;
   double tolerance = 1e-10;
+  int numberLoops=100;
 
   @Test public void testParseDoublesConst(){
-    int numberLoops = 10;
     double startTime = System.currentTimeMillis();
     for (int index=0; index<numberLoops; index++)
       testsForDoubles(true);
@@ -31,7 +30,6 @@ public class NewChunkSpeedTest extends TestUtil {
   }
 
   @Test public void testParseDoubles(){
-    int numberLoops = 10;
     double startTime = System.currentTimeMillis();
     for (int index=0; index<numberLoops; index++)
       testsForDoubles(false);
@@ -40,7 +38,6 @@ public class NewChunkSpeedTest extends TestUtil {
   }
 
   @Test public void testParseInteger(){
-    int numberLoops = 10;
     double startTime = System.currentTimeMillis();
     for (int index=0; index<numberLoops; index++)
       testsForIntegers(false);
@@ -49,7 +46,6 @@ public class NewChunkSpeedTest extends TestUtil {
   }
 
   @Test public void testParseIntegerConst(){
-    int numberLoops = 10;
     double startTime = System.currentTimeMillis();
     for (int index=0; index<numberLoops; index++)
       testsForIntegers(true);
@@ -59,9 +55,8 @@ public class NewChunkSpeedTest extends TestUtil {
 
 
   // todo: This should be changed to test after Spencer PR is in.
-  @Ignore
+  @Test
   public void testParseLong(){
-    int numberLoops = 10;
     double startTime = System.currentTimeMillis();
     for (int index=0; index<numberLoops; index++)
       testsForLongs(false);
@@ -70,7 +65,6 @@ public class NewChunkSpeedTest extends TestUtil {
   }
 
   @Test public void testParseLongConsts(){
-    int numberLoops = 10;
     double startTime = System.currentTimeMillis();
     for (int index=0; index<numberLoops; index++)
       testsForLongs(true);
